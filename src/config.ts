@@ -1,5 +1,5 @@
 const DEFAULT_DB_URL = 'mysql://api:secretpassword@localhost:3306/umbragado';
-const DEFAULT_PORT = '3000';
+const DEFAULT_PORT = '4000';
 const DEFAULT_SECRET_KEY = 'secret';
 const DEFAULT_SECRET_JWT = 'secret';
 
