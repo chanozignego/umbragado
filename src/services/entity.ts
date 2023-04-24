@@ -17,6 +17,14 @@ export abstract class EntityService<T> {
     return this.repository.find(options);
   }
 
+  async getById(id: number) {
+    const entity = await this.repository.findOne(id);
+    if (!entity) {
+      throw new NotFoundError('Entity not found matching the criteria');
+    }
+    return entity;
+  }
+
   async findOneBy(options: FindOneOptions<T>) {
     const entity = await this.repository.findOne(options);
     if (!entity) {

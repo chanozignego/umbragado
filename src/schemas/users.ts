@@ -27,6 +27,12 @@ export interface DeleteUser {
     };
 };
 
+export interface GetUser {
+    Params: {
+        id: string;
+    };
+};
+
 export interface AuthUser {
     Body: Session;
 };

@@ -8,12 +8,19 @@ import {
   AuthUser,
   CreateUser,
   UpdateUser,
+  GetUser,
 } from '../schemas/users';
 
 export default async function (app: FastifyInstance) {
   app.get('/api/users', async (request, reply) => {
     const users = await userService.find();
     reply.send(users);
+  });
+
+  app.get<GetUser>('/api/users/:id', async (request, reply) => {
+    const id = parseInt(request.params.id, 10);
+    const user = await userService.getById(id);
+    reply.send(user);
   });
 
   app.post<CreateUser>('/api/users', async (request, reply) => {
