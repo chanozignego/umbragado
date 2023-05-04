@@ -17,8 +17,8 @@ export abstract class EntityService<T> {
     return this.repository.find(options);
   }
 
-  async getById(id: number) {
-    const entity = await this.repository.findOne(id);
+  async getById(id: number, relations?: string[]) {
+    const entity = await this.repository.findOne(id, {relations: relations});
     if (!entity) {
       throw new NotFoundError('Entity not found matching the criteria');
     }
@@ -48,14 +48,13 @@ export abstract class EntityService<T> {
     return await this.repository.save(payloads);
   }
 
-  async update(id: number, payload: DeepPartial<T>) {
+  async update(id: number, payload: any) {
     const entity = await this.repository.findOne(id);
     if (!entity) {
       throw new NotFoundError('Entity not found matching the criteria');
     }
-    // const mergedEntity = this.repository.merge(entity, payload);
+    payload.id = id;
     return await this.repository.save(payload);
-    // return await this.repository.save(mergedEntity);
   }
 
   async deleteById(id: number) {

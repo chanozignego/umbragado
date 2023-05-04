@@ -1,6 +1,8 @@
 import { Connection, createConnection } from 'typeorm';
 
 import config from './config';
+import { Location } from './entities/location';
+import { School } from './entities/school';
 import { Token } from './entities/token';
 import { User } from './entities/user';
 
@@ -14,6 +16,8 @@ export class Database {
       synchronize: true,
       url: config.db.url,
       entities: [
+        Location,
+        School,
         Token,
         User,
       ],
