@@ -1,3 +1,5 @@
+import { NewLocation } from "./common";
+
 export interface NewSchool {
     name: string;
     phone: string;
@@ -7,15 +9,6 @@ export interface NewSchool {
     director_name?: string;
     referent_name?: string;
     location: NewLocation;
-};
-
-export interface NewLocation {
-    id?: number;
-    province?: string;
-    city?: string;
-    address?: string;
-    zip_code?: string;
-    details?: string;
 };
 
 export interface CreateSchool {

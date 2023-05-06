@@ -2,6 +2,9 @@ import { Connection, createConnection } from 'typeorm';
 
 import config from './config';
 import { Location } from './entities/location';
+import { MedicalData } from './entities/medical-data';
+import { PersonalData } from './entities/personal-data';
+import { Professor } from './entities/professor';
 import { School } from './entities/school';
 import { Token } from './entities/token';
 import { User } from './entities/user';
@@ -16,7 +19,10 @@ export class Database {
       synchronize: true,
       url: config.db.url,
       entities: [
+        PersonalData,
+        MedicalData,
         Location,
+        Professor,
         School,
         Token,
         User,

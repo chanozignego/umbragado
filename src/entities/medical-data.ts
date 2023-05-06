@@ -11,13 +11,13 @@ export class MedicalData {
   @Column()
   rh_factor?: string;
 
-  @Column()
+  @Column({nullable: true})
   medical_insurance?: string;
 
-  @Column()
+  @Column({nullable: true})
   medical_insurance_affiliate_number?: string;
 
-  @Column()
+  @Column({nullable: true})
   medical_insurance_phone_number?: string;
 
   @Column()
@@ -32,34 +32,34 @@ export class MedicalData {
   @Column()
   has_chronic_desease?: boolean = false;
 
-  @Column()
+  @Column({nullable: true})
   chronic_desease_detail?: string;
 
-  @Column()
+  @Column({default: false})
   take_medication?: boolean = false;
 
-  @Column()
+  @Column({nullable: true})
   medication_detail?: string;
 
-  @Column()
+  @Column({default: false})
   has_medical_background?: boolean = false;
 
-  @Column()
+  @Column({nullable: true})
   medical_background_detail?: string;
 
-  @Column()
+  @Column({default: false})
   has_allergy?: boolean = false;
 
-  @Column()
+  @Column({nullable: true})
   allergy_detail?: string;
 
-  @Column()
+  @Column({default: false})
   has_specific_diet?: boolean = false;
 
-  @Column()
+  @Column({nullable: true})
   specific_diet_detail?: string;
 
-  @Column()
+  @Column({default: false})
   is_vegetarian?: boolean = false;
 
   @Column()
@@ -68,7 +68,7 @@ export class MedicalData {
   @Column()
   doctor_phone_number?: string;
 
-  @Column()
+  @Column({nullable: true})
   urgency_clinic?: string;
 
   @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })

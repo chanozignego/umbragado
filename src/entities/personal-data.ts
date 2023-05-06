@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Location } from './location';
 
 @Entity({ name: 'personal_data' })
 export class PersonalData {
