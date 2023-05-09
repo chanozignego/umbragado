@@ -5,13 +5,13 @@ import { professorService } from '../services/professor';
 
 export default async function (app: FastifyInstance) {
   app.get('/api/professors', async (request, reply) => {
-    const professors = await professorService.find(['personal_data', 'medical_data']);
+    const professors = await professorService.find(['personal_data', 'personal_data.location', 'medical_data']);
     reply.send(professors);
   });
 
   app.get<GetProfessor>('/api/professors/:id', async (request, reply) => {
     const id = parseInt(request.params.id, 10);
-    const professor = await professorService.getById(id, ['personal_data', 'medical_data']);
+    const professor = await professorService.getById(id, ['personal_data', 'personal_data.location', 'medical_data']);
     reply.send(professor);
   });
 

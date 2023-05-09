@@ -27,7 +27,7 @@ export class PersonalData {
   @Column()
   email?: string;
 
-  @OneToOne(() => Location, { onDelete: 'CASCADE' })
+  @OneToOne(() => Location, { cascade: true, onDelete: 'CASCADE' })
   @JoinColumn()
   location?: Location;
 
