@@ -1,6 +1,8 @@
+import { Statuses } from "../entities/school";
 import { NewLocation } from "./common";
 
 export interface NewSchool {
+    status?: Statuses;
     name: string;
     phone: string;
     fax?: string;

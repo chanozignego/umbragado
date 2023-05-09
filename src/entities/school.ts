@@ -1,10 +1,20 @@
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from 'typeorm';
 import { Location } from './location';
 
+export type Statuses = "pending" | "active";
+
 @Entity({ name: 'schools' })
 export class School {
   @PrimaryGeneratedColumn()
   id?: number;
+
+  @Column({
+    type: 'enum',
+    enum: ["pending", "active"],
+    default: "pending",
+    nullable: false
+  })
+  status?: Statuses;
 
   @Column()
   name?: string;

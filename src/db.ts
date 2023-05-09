@@ -1,6 +1,7 @@
 import { Connection, createConnection } from 'typeorm';
 
 import config from './config';
+import { Inscription } from './entities/inscription';
 import { Location } from './entities/location';
 import { MedicalData } from './entities/medical-data';
 import { Partaker } from './entities/partaker';
@@ -20,6 +21,7 @@ export class Database {
       synchronize: true,
       url: config.db.url,
       entities: [
+        Inscription,
         PersonalData,
         MedicalData,
         Location,

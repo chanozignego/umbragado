@@ -1,15 +1,28 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
+export type BloodTypes = "0" | "A" | "B" | "AB";
+export type RHFactors = "+" | "-";
+
 @Entity({ name: 'medical_data' })
 export class MedicalData {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column()
-  blood_type?: string;
+  @Column({
+    type: 'enum',
+    enum: ["0", "A", "B", "AB"],
+    default: "0",
+    nullable: false
+  })
+  blood_type?: BloodTypes;
 
-  @Column()
-  rh_factor?: string;
+  @Column({
+    type: 'enum',
+    enum: ["+", "-"],
+    default: "+",
+    nullable: false
+  })
+  rh_factor?: RHFactors;
 
   @Column({nullable: true})
   medical_insurance?: string;

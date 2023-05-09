@@ -1,3 +1,5 @@
+import { BloodTypes, RHFactors } from "../entities/medical-data";
+
 export interface NewPersonalData {
     id?: number;
     first_name?: string;
@@ -12,8 +14,8 @@ export interface NewPersonalData {
 
 export interface NewMedicalData {
     id?: number;
-    blood_type?: string;
-    rh_factor?: string;
+    blood_type?: BloodTypes;
+    rh_factor?: RHFactors;
     medical_insurance?: string;
     medical_insurance_affiliate_number?: string;
     medical_insurance_phone_number?: string;

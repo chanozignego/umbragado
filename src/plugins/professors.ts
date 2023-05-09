@@ -2,16 +2,17 @@ import { FastifyInstance } from 'fastify';
 import { GetProfessor, CreateProfessor, UpdateProfessor, DeleteProfessor } from '../schemas/professors';
 import { professorService } from '../services/professor';
 
+const relations = ['personal_data', 'personal_data.location', 'medical_data'];
 
 export default async function (app: FastifyInstance) {
   app.get('/api/professors', async (request, reply) => {
-    const professors = await professorService.find(['personal_data', 'personal_data.location', 'medical_data']);
+    const professors = await professorService.find(relations);
     reply.send(professors);
   });
 
   app.get<GetProfessor>('/api/professors/:id', async (request, reply) => {
     const id = parseInt(request.params.id, 10);
-    const professor = await professorService.getById(id, ['personal_data', 'personal_data.location', 'medical_data']);
+    const professor = await professorService.getById(id, relations);
     reply.send(professor);
   });
 

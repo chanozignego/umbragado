@@ -4,15 +4,37 @@ import { PersonalData } from './personal-data';
 import { Professor } from './professor';
 import { School } from './school';
 
+export type PartakerTypes = "delegate" | "authority";
+export type PartakerRoles = "cs" | "sti" | "ag" | "ecosoc";
+export type Statuses = "pending" | "active";
+
 @Entity({ name: 'partakers' })
 export class Partaker {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column({default: 'delegate', nullable: false})
-  type?: string;
+  @Column({
+    type: 'enum',
+    enum: ["pending", "active"],
+    default: "pending",
+    nullable: false
+  })
+  status?: Statuses;
 
-  @Column({nullable: true})
+  @Column({
+    type: 'enum',
+    enum: ["delegate", "authority"],
+    default: "delegate",
+    nullable: false
+  })
+  type?: PartakerTypes;
+
+  @Column({
+    type: 'enum',
+    enum: ["cs", "sti", "ag", "ecosoc"],
+    default: "ag",
+    nullable: false
+  })
   rol?: string;
 
   @Column({default: false})

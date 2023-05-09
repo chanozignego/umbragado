@@ -1,8 +1,10 @@
+import { PartakerRoles, PartakerTypes, Statuses } from "../entities/partaker";
 import { NewMedicalData, NewPersonalData } from "./common";
 
 export interface NewPartaker {
-    type?: string;
-    rol?: string;
+    status?: Statuses;
+    type?: PartakerTypes;
+    rol?: PartakerRoles;
     participated?: boolean;
     graduated?: boolean;
     school_year?: number;

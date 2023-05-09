@@ -2,16 +2,17 @@ import { FastifyInstance } from 'fastify';
 import { GetSchool, CreateSchool, UpdateSchool, DeleteSchool } from '../schemas/schools';
 import { schoolService } from '../services/school';
 
+const relations = ['location'];
 
 export default async function (app: FastifyInstance) {
   app.get('/api/schools', async (request, reply) => {
-    const schools = await schoolService.find(['location']);
+    const schools = await schoolService.find(relations);
     reply.send(schools);
   });
 
   app.get<GetSchool>('/api/schools/:id', async (request, reply) => {
     const id = parseInt(request.params.id, 10);
-    const school = await schoolService.getById(id, ['location']);
+    const school = await schoolService.getById(id, relations);
     reply.send(school);
   });
 

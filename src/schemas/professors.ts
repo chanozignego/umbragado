@@ -1,6 +1,8 @@
+import { Statuses } from "../entities/professor";
 import { NewMedicalData, NewPersonalData } from "./common";
 
 export interface NewProfessor {
+    status?: Statuses;
     personal_data: NewPersonalData;
     medical_data: NewMedicalData;
 };
