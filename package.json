@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon",
+    "start": "nodemon",
     "build": "tsc -p tsconfig.json",
     "db:start": "docker-compose -p umbragado up db",
     "db:stop": "docker-compose -p umbragado down"
